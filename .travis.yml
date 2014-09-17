@@ -17,6 +17,7 @@ services: mongodb
 
 before_script:
     - sed -i s/"memory_limit = 128M"/"memory_limit = 1G"/g $HOME/.phpenv/versions/5.3/etc/php.ini
+    - . $HOME/.bashrc
     - travis_retry sudo apt-get install parallel
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm-nightly" ]; then echo "" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini; fi;'
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm-nightly" ]; then echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
