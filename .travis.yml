@@ -16,6 +16,7 @@ matrix:
 services: mongodb
 
 before_script:
+    - env
     - sed -i s/"memory_limit = 128M"/"memory_limit = 1G"/g $HOME/.phpenv/versions/5.3/etc/php.ini
     - travis_retry sudo apt-get install parallel
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm-nightly" ]; then echo "" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini; fi;'
