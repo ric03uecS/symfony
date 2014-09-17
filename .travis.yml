@@ -16,6 +16,8 @@ matrix:
 services: mongodb
 
 before_script:
+    - . $HOME/.bashrc
+    - . $HOME/.bash_profile
     - env
     - sed -i s/"memory_limit = 128M"/"memory_limit = 1G"/g $HOME/.phpenv/versions/5.3/etc/php.ini
     - travis_retry sudo apt-get install parallel
