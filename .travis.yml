@@ -3,8 +3,6 @@ language: php
 
 php:
     - 5.3
-    - 5.5
-    - 5.6
         
 #    - 5.3.3
 #    - 5.3
@@ -19,7 +17,8 @@ matrix:
 services: mongodb
 
 before_script:
-    - export SHELL=/bin/bash
+    - ls -al /dev
+    - echo "some input" > /dev/tty
     - travis_retry sudo apt-get install parallel
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm-nightly" ]; then echo "" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini; fi;'
     - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm-nightly" ]; then echo "extension = mongo.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
